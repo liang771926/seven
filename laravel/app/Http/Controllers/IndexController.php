@@ -17,17 +17,15 @@ class IndexController  extends Controller {
 		//echo $text;die;
 		$sql = "insert into liuyan(text) values('$text')";
 		$re=DB::insert($sql);
-		$sql = "select * from liuyan order by id desc";
-		$re = DB::select($sql);
-		return view('index.indexadd')->with('arr',$re);
+		$data=DB::table('liuyan')->paginate(5);
+		return view('index.indexadd',['arr'=>$data]);
 	}
 	public function indexdel(){
 		$id = $_GET['id'];
 		$sql = "delete from liuyan where(id='$id')";
 		$re=DB::delete($sql);
-		$sql = "select * from liuyan order by id desc";
-		$re = DB::select($sql);
-		return view('index.indexdel')->with('arr',$re);
+		$data=DB::table('liuyan')->paginate(5);
+		return view('index.indexdel',['arr'=>$data]);
 	}
 	public function indexupd(){
 		$id=$_GET['id'];
