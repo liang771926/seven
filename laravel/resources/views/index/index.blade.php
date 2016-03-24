@@ -25,8 +25,10 @@
 					</tr>
 				@endforeach
 			</table>
+			</div>
+			{!!$arr->render()!!}
 		</form>
-		{!!$arr->render()!!}
+		
 </body>
 </html>
 <script src="./js/jquery1-8-0.js"></script>
